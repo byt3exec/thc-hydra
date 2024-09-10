@@ -1,20 +1,19 @@
+H Y D R A
 
-				  H Y D R A
+(c) 2001-2023 by van Hauser / THC
+<vh@thc.org> https://github.com/vanhauser-thc/thc-hydra
+many modules were written by David (dot) Maciejak @ gmail (dot) com
+BFG code by Jan Dlabal <dlabaljan@gmail.com>
 
-                      (c) 2001-2023 by van Hauser / THC
-             <vh@thc.org> https://github.com/vanhauser-thc/thc-hydra
-       many modules were written by David (dot) Maciejak @ gmail (dot) com
-                 BFG code by Jan Dlabal <dlabaljan@gmail.com>
+Licensed under AGPLv3 (see LICENSE file)
 
-  		    Licensed under AGPLv3 (see LICENSE file)
+Please do not use in military or secret service organizations,
+or for illegal purposes.
+(This is the wish of the author and non-binding. Many people working
+in these organizations do not care for laws and ethics anyways.
+You are not one of the "good" ones if you ignore this.)
 
-           Please do not use in military or secret service organizations,
-                          or for illegal purposes.
-      (This is the wish of the author and non-binding. Many people working
-       in these organizations do not care for laws and ethics anyways.
-            You are not one of the "good" ones if you ignore this.)
-
-           NOTE: no this is not meant to be a markdown doc! old school!
+NOTE: no this is not meant to be a markdown doc! old school!
 
 
 Hydra in the most current github state can be directly downloaded via docker:
@@ -41,14 +40,14 @@ It was tested to compile cleanly on Linux, Windows/Cygwin, Solaris,
 FreeBSD/OpenBSD, QNX (Blackberry 10) and MacOS.
 
 Currently this tool supports the following protocols:
- Asterisk, AFP, Cisco AAA, Cisco auth, Cisco enable, CVS, Firebird, FTP,
- HTTP-FORM-GET, HTTP-FORM-POST, HTTP-GET, HTTP-HEAD, HTTP-POST, HTTP-PROXY,
- HTTPS-FORM-GET, HTTPS-FORM-POST, HTTPS-GET, HTTPS-HEAD, HTTPS-POST,
- HTTP-Proxy, ICQ, IMAP, IRC, LDAP, MEMCACHED, MONGODB, MS-SQL, MYSQL, NCP, NNTP, Oracle Listener,
- Oracle SID, Oracle, PC-Anywhere, PCNFS, POP3, POSTGRES, Radmin, RDP, Rexec, Rlogin,
- Rsh, RTSP, SAP/R3, SIP, SMB, SMTP, SMTP Enum, SNMP v1+v2+v3, SOCKS5,
- SSH (v1 and v2), SSHKEY, Subversion, Teamspeak (TS2), Telnet, VMware-Auth,
- VNC and XMPP.
+Asterisk, AFP, Cisco AAA, Cisco auth, Cisco enable, CVS, Firebird, FTP,
+HTTP-FORM-GET, HTTP-FORM-POST, HTTP-GET, HTTP-HEAD, HTTP-POST, HTTP-PROXY,
+HTTPS-FORM-GET, HTTPS-FORM-POST, HTTPS-GET, HTTPS-HEAD, HTTPS-POST,
+HTTP-Proxy, ICQ, IMAP, IRC, LDAP, MEMCACHED, MONGODB, MS-SQL, MYSQL, NCP, NNTP, Oracle Listener,
+Oracle SID, Oracle, PC-Anywhere, PCNFS, POP3, POSTGRES, Radmin, RDP, Rexec, Rlogin,
+Rsh, RTSP, SAP/R3, SIP, SMB, SMTP, SMTP Enum, SNMP v1+v2+v3, SOCKS5,
+SSH (v1 and v2), SSHKEY, Subversion, Teamspeak (TS2), Telnet, VMware-Auth,
+VNC and XMPP.
 
 However the module engine for new services is very easy so it won't take a
 long time until even more services are supported.
@@ -62,9 +61,9 @@ You can always find the newest release/production version of hydra at its
 project page at https://github.com/vanhauser-thc/thc-hydra/releases
 If you are interested in the current development state, the public development
 repository is at Github:
-  svn co https://github.com/vanhauser-thc/thc-hydra
- or
-  git clone https://github.com/vanhauser-thc/thc-hydra
+svn co https://github.com/vanhauser-thc/thc-hydra
+or
+git clone https://github.com/vanhauser-thc/thc-hydra
 Use the development version at your own risk. It contains new features and
 new bugs. Things might not work!
 
@@ -94,9 +93,9 @@ for a few optional modules (note that some might not be available on your distri
 
 ```
 apt-get install libssl-dev libssh-dev libidn11-dev libpcre3-dev \
-                 libgtk2.0-dev libmysqlclient-dev libpq-dev libsvn-dev \
-                 firebird-dev libmemcached-dev libgpg-error-dev \
-                 libgcrypt11-dev libgcrypt20-dev
+libgtk2.0-dev libmysqlclient-dev libpq-dev libsvn-dev \
+firebird-dev libmemcached-dev libgpg-error-dev \
+libgcrypt11-dev libgcrypt20-dev
 ```
 
 This enables all optional modules and features with the exception of Oracle,
@@ -132,10 +131,10 @@ a list.
 For Linux users, a GTK GUI is available, try `./xhydra`
 
 For the command line usage, the syntax is as follows:
- For attacking one target or a network, you can use the new "://" style:
-  hydra [some command line options] PROTOCOL://TARGET:PORT/MODULE-OPTIONS
- The old mode can be used for these too, and additionally if you want to
- specify your targets from a text file, you *must* use this one:
+For attacking one target or a network, you can use the new "://" style:
+hydra [some command line options] PROTOCOL://TARGET:PORT/MODULE-OPTIONS
+The old mode can be used for these too, and additionally if you want to
+specify your targets from a text file, you *must* use this one:
 
 ```
 hydra [some command line options] [-s PORT] TARGET PROTOCOL [MODULE-OPTIONS]
@@ -150,29 +149,29 @@ TARGET is the target you want to attack
 MODULE-OPTIONS are optional values which are special per PROTOCOL module
 
 FIRST - select your target
- you have three options on how to specify the target you want to attack:
- 1. a single target on the command line: just put the IP or DNS address in
- 2. a network range on the command line: CIDR specification like "192.168.0.0/24"
- 3. a list of hosts in a text file: one line per entry (see below)
+you have three options on how to specify the target you want to attack:
+1. a single target on the command line: just put the IP or DNS address in
+2. a network range on the command line: CIDR specification like "192.168.0.0/24"
+3. a list of hosts in a text file: one line per entry (see below)
 
 SECOND - select your protocol
- Try to avoid telnet, as it is unreliable to detect a correct or false login attempt.
- Use a port scanner to see which protocols are enabled on the target.
+Try to avoid telnet, as it is unreliable to detect a correct or false login attempt.
+Use a port scanner to see which protocols are enabled on the target.
 
 THIRD - check if the module has optional parameters
- hydra -U PROTOCOL
- e.g. hydra -U smtp
+hydra -U PROTOCOL
+e.g. hydra -U smtp
 
 FOURTH - the destination port
- this is optional, if no port is supplied the default common port for the
- PROTOCOL is used.
- If you specify SSL to use ("-S" option), the SSL common port is used by default.
+this is optional, if no port is supplied the default common port for the
+PROTOCOL is used.
+If you specify SSL to use ("-S" option), the SSL common port is used by default.
 
 
 If you use "://" notation, you must use "[" "]" brackets if you want to supply
 IPv6 addresses or CIDR ("192.168.0.0/24") notations to attack:
-  hydra [some command line options] ftp://[192.168.0.0/24]/
-  hydra [some command line options] -6 smtps://[2001:db8::1]/NTLM
+hydra [some command line options] ftp://[192.168.0.0/24]/
+hydra [some command line options] -6 smtps://[2001:db8::1]/NTLM
 
 Note that everything hydra does is IPv4 only!
 If you want to attack IPv6 addresses, you must add the "-6" command line option.
@@ -180,7 +179,7 @@ All attacks are then IPv6 only!
 
 If you want to supply your targets via a text file, you can not use the ://
 notation but use the old style and just supply the protocol (and module options):
-  hydra [some command line options] -M targets.txt ftp
+hydra [some command line options] -M targets.txt ftp
 You can also supply the port for each target entry by adding ":<port>" after a
 target entry in the file, e.g.:
 
@@ -284,11 +283,11 @@ Many modules use this, a few require it!
 
 To see the special option of a module, type:
 
-  hydra -U <module>
+hydra -U <module>
 
 e.g.
 
-  ./hydra -U http-post-form
+./hydra -U http-post-form
 
 The special options can be passed via the -m parameter, as 3rd command line
 option or in the service://target/option format.
@@ -342,14 +341,14 @@ HYDRA_PROXY=socksproxylist.txt
 ADDITIONAL HINTS
 ----------------
 * sort your password files by likelihood and use the -u option to find
-  passwords much faster!
+passwords much faster!
 * uniq your dictionary files! this can save you a lot of time :-)
-    cat words.txt | sort | uniq > dictionary.txt
+cat words.txt | sort | uniq > dictionary.txt
 * if you know that the target is using a password policy (allowing users
-  only to choose a password with a minimum length of 6, containing a least one
-  letter and one number, etc. use the tool pw-inspector which comes along
-  with the hydra package to reduce the password list:
-    cat dictionary.txt | pw-inspector -m 6 -c 2 -n > passlist.txt
+only to choose a password with a minimum length of 6, containing a least one
+letter and one number, etc. use the tool pw-inspector which comes along
+with the hydra package to reduce the password list:
+cat dictionary.txt | pw-inspector -m 6 -c 2 -n > passlist.txt
 
 
 RESULTS OUTPUT
@@ -362,7 +361,7 @@ the format of the output can be specified.  Currently, these are supported:
 * `text`   - plain text format
 * `jsonv1` - JSON data using version 1.x of the schema (defined below).
 * `json`   - JSON data using the latest version of the schema, currently there
-             is only version 1.
+is only version 1.
 
 If using JSON output, the results file may not be valid JSON if there are
 serious errors in booting Hydra.
@@ -373,53 +372,53 @@ JSON Schema
 Here is an example of the JSON output.  Notes on some of the fields:
 
 * `errormessages` - an array of zero or more strings that are normally printed
-   to stderr at the end of the Hydra's run.  The text is very free form.
+to stderr at the end of the Hydra's run.  The text is very free form.
 * `success` - indication if Hydra ran correctly without error (**NOT** if
-   passwords were detected).  This parameter is either the JSON value `true`
-   or `false` depending on completion.  
+passwords were detected).  This parameter is either the JSON value `true`
+or `false` depending on completion.  
 * `quantityfound` - How many username+password combinations discovered.
 * `jsonoutputversion` - Version of the schema, 1.00, 1.01, 1.11, 2.00,
-   2.03, etc.  Hydra will make second tuple of the version to always be two
-   digits to make it easier for downstream processors (as opposed to v1.1 vs
-   v1.10).  The minor-level versions are additive, so 1.02 will contain more
-   fields than version 1.00 and will be backward compatible.  Version 2.x will
-   break something from version 1.x output.  
+2.03, etc.  Hydra will make second tuple of the version to always be two
+digits to make it easier for downstream processors (as opposed to v1.1 vs
+v1.10).  The minor-level versions are additive, so 1.02 will contain more
+fields than version 1.00 and will be backward compatible.  Version 2.x will
+break something from version 1.x output.  
 
 Version 1.00 example:
 ```
 {
-    "errormessages": [
-        "[ERROR] Error Message of Something",
-        "[ERROR] Another Message",
-        "These are very free form"
-    ],
-    "generator": {
-        "built": "2021-03-01 14:44:22",
-        "commandline": "hydra -b jsonv1 -o results.json ... ...",
-        "jsonoutputversion": "1.00",
-        "server": "127.0.0.1",
-        "service": "http-post-form",
-        "software": "Hydra",
-        "version": "v8.5"
-    },
-    "quantityfound": 2,
-    "results": [
-        {
-            "host": "127.0.0.1",
-            "login": "bill@example.com",
-            "password": "bill",
-            "port": 9999,
-            "service": "http-post-form"
-        },
-        {
-            "host": "127.0.0.1",
-            "login": "joe@example.com",
-            "password": "joe",
-            "port": 9999,
-            "service": "http-post-form"
-        }
-    ],
-    "success": false
+"errormessages": [
+"[ERROR] Error Message of Something",
+"[ERROR] Another Message",
+"These are very free form"
+],
+"generator": {
+"built": "2021-03-01 14:44:22",
+"commandline": "hydra -b jsonv1 -o results.json ... ...",
+"jsonoutputversion": "1.00",
+"server": "127.0.0.1",
+"service": "http-post-form",
+"software": "Hydra",
+"version": "v8.5"
+},
+"quantityfound": 2,
+"results": [
+{
+"host": "127.0.0.1",
+"login": "bill@example.com",
+"password": "bill",
+"port": 9999,
+"service": "http-post-form"
+},
+{
+"host": "127.0.0.1",
+"login": "joe@example.com",
+"password": "joe",
+"port": 9999,
+"service": "http-post-form"
+}
+],
+"success": false
 }
 ```
 
@@ -441,7 +440,7 @@ Run against a SuSE Linux 7.2 on localhost with a "-C FILE" containing
 times (only for "1 task" just once), and the average noted down.
 
 ```
-			P A R A L L E L    T A S K S
+P A R A L L E L    T A S K S
 SERVICE	1	4	8	16	32	50	64	100	128
 ------- --------------------------------------------------------------------
 telnet	23:20	5:58	2:58	1:34	1:05	0:33	0:45*	0:25*	0:55*
@@ -456,15 +455,15 @@ Note: telnet timings can be VERY different for 64 to 128 tasks! e.g. with
 The reason for this is unknown...
 
 guesses per task (rounded up):
-	
-  295	74	38	19	10	6	5	3	3
+
+295	74	38	19	10	6	5	3	3
 
 guesses possible per connect (depends on the server software and config):
-	
-  telnet	4
-	ftp	6
-	pop3	1
-	imap	3
+
+telnet	4
+ftp	6
+pop3	1
+imap	3
 
 
 
